@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Info</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class=row>
+      <div class="col-md-6">
+        <h3>Latest Mars News</h3>
+        <h4>{{ mars.news_title }}</h4>
+        <p>{{ mars.news_para}}</p>
+      </div>
+    </div>
+    <div class=row>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Featured Mars Image</h3>
+          </div>
+          <img src="{{mars.mars_image}}" class="card-img-top" alt="mars_image">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-deck" style="width: 40rem;">
+          <div class="card-body">
+            <h5 class="card-title">Current Weather on Mars</h5>
+            <p class="card-text">{{ mars.mars_weather }}</p>
+          </div>
+        </div>
+      </div>
+      <br> 5 </br>
+      <div class="col-md-6">
+        <h3 class="card-title">Mars facts</h3>
+
+        <table style="width:100%">
+
+          <tr>
+            <th>Description</th>
+            <th>Value</th>
+          </tr>
+          {% for value in mars.mars_facts %}
+          <tr>
+
+            <td>{{ value }} </td>
+            <td>{{ mars.mars_facts[value] }}</td>
+
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <h3 class="hemi">Mars Hemispheres</h3>
+
+    <div class="row">
+      {% for value in mars.mars_hemi%}
+      <div class="col-xs-6 imgcont" id="port2-first-col">
+        <div class="card" style="width: 50rem;">
+          <img src="{{value.img_url}}" alt="training">
+        </div>
+        <div class="card-footer text1">
+          {{value.title}}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+
+</body>
+
+</html>
